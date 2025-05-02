@@ -1,4 +1,4 @@
 #!/bin/sh 
 
-cp /tmp/security_solr.json /var/solr/data
+cp /tmp/security_solr.json /var/solr/data/security.json
 

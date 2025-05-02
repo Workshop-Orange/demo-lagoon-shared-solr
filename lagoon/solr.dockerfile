@@ -4,10 +4,10 @@ ARG SOLR_SEC
 
 CMD solr-recreate drupal /solr-conf && solr-foreground
 
-COPY lagoon/security.json /tmp/security_solr.json
+COPY lagoon/security.json /tmp/security_template.json
 COPY lagoon/entry-point-setup-solr.sh /lagoon/entrypoints/98-env-setup-solr.sh
 
-RUN sed -i "s/%REPLACE%/$SOLR_SEC/" /tmp/security_solr.json
+RUN cat /tmp/security_template.json | sed "s/%REPLACE%/$SOLR_SEC/" > /tmp/security_solr.json
 
 # Example adding a second core
 # COPY lagoon/drupal-4.2.7-solr-8.x-1/ /solr-conf2/conf
